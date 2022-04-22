@@ -3,6 +3,11 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FooterComponent } from './footer/footer.component';
+import { UserService } from './service/user.service';
+import { OfferService } from './service/offer.service';
+import { BlogService } from './service/blog.service';
+import { AuthRoutingModule } from '../auth/auth-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +18,9 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     CommonModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    AuthRoutingModule,
+    RouterModule
   ],
   exports: [
     NavbarComponent,
@@ -25,7 +32,9 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
-
+        UserService,
+        OfferService,
+        BlogService,
       ]
     }
   }

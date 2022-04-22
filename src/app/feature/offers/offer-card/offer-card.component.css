@@ -20,3 +20,7 @@ div .card{
     background-color: #292928;
     color: white;
 }
+
+.col{
+    margin-bottom: 2rem;
+}

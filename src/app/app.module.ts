@@ -8,6 +8,9 @@ import { CoreModule } from './core/core.module';
 import { BlogModule } from './feature/news/blog.module';
 import { OffersModule } from './feature/offers/offers.module';
 import { PagesModule } from './feature/pages/pages.module';
+import { RouterModule } from '@angular/router';
+import { AuthRoutingModule } from './auth/auth-routing.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,13 @@ import { PagesModule } from './feature/pages/pages.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AuthModule,
+    AuthRoutingModule,
     CoreModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     BlogModule,
     OffersModule,
-    PagesModule
+    PagesModule,
   ],
   providers: [],
   bootstrap: [
