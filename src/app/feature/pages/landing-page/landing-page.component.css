@@ -1,0 +1,52 @@
+article{
+    padding: 5rem 20rem;
+    display: flex;
+}
+
+.landing-page-article{
+    justify-content: space-between;
+    background-color: grey;
+    gap: 5rem;
+}
+
+.article-info a{
+    padding: 0.5rem 1rem;
+    background-color: #FFEA00;
+    border-radius: 5px;
+    color: #000;
+}
+
+.article-info a:hover{
+    background-color: #292928;
+    color: white;
+}
+
+.article-info{
+    display: flex;
+    flex-direction: column;   
+    align-items: flex-start;
+    color: white;
+}
+
+article h3{
+    font-size: 3rem;
+}
+
+.langing-page-blog-article{
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    background-color: #FFEA00;
+}
+
+.langing-page-blog-article a{
+    padding: 0.5rem 1rem;
+    border: 1px solid black;
+    border-radius: 4px;
+    color: black;
+}
+
+.langing-page-blog-article a:hover{
+    background-color: #000;
+    color: white;
+}

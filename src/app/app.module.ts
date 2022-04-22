@@ -3,6 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { CoreModule } from './core/core.module';
+import { BlogModule } from './feature/news/blog.module';
+import { OffersModule } from './feature/offers/offers.module';
+import { PagesModule } from './feature/pages/pages.module';
 
 @NgModule({
   declarations: [
@@ -10,9 +15,16 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule.forRoot(),
+    MDBBootstrapModule.forRoot(),
+    BlogModule,
+    OffersModule,
+    PagesModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

@@ -1,0 +1,23 @@
+.page-footer{
+    background-color: #292928;
+}
+
+.social-media{
+    display: flex;
+    gap: 10%;
+}
+
+.footer-title{
+    font-style: italic;
+    font-size: 1.6rem;
+}
+
+.made-with-angular{
+    color: #A6A6A6;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

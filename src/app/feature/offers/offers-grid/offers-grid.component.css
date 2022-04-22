@@ -1,0 +1,20 @@
+.cards-container{
+    padding: 4rem;
+    background-color: #292928;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.see-all-offers{
+    padding: 0.5rem 1rem;
+    background-color: #292928;
+    border-radius: 5px;
+    border: 1px solid #FFEA00;
+    color: #FFEA00;
+    align-self: flex-end;
+}
+
+.see-all-offers:hover{
+    color: black;
+    background-color: #FFEA00;   
+}

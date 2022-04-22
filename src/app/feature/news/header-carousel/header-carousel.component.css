@@ -1,0 +1,23 @@
+.view > img{
+    max-height: 550px;
+    object-fit: cover;
+}
+
+.carousel-caption{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.h1-responsive{
+    font-size: 7rem;
+    text-align: left;
+}
+
+.carousel .read-review-btn{
+    padding: 0.5rem 1rem;
+    background-color: #ffea00;
+    border-radius: 3px;
+    color: #292928;
+}
+

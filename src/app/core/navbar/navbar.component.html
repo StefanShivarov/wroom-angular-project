@@ -1,0 +1,65 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar fixed-top navbar-expand-sm .justify-content-space-around navbar-light yellow accent-3" [containerInside]="false">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" href="#">WROOM</a></mdb-navbar-brand>
+
+    <!-- Collapsible content -->
+    <links>
+
+        <!-- Links -->
+        
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect>Offers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect>News</a>
+            </li>
+
+            <!-- Dropdown -->
+            <li class="nav-item dropdown" dropdown>
+                <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
+                    mdbWavesEffect>
+                    Add<span class="caret"></span></a>
+                <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Add Offer</a>
+                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Add Review</a>
+                </div>
+            </li>
+
+        </ul>
+        <!-- Links -->
+
+        <ul class="navbar-nav ml-auto nav-flex-icons authenticated">
+            
+            <li class="nav-item">
+                
+                <a class="nav-link">
+                    <div class="btn-group" mdbDropdown>
+                        <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+                            <a class="dropdown-item username-item">username</a>
+                            <a class="dropdown-item" href="#">Profile</a>
+                            <div class="divider dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Sign Out</a>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto anonymous">
+            <li class="nav-item">
+                <a href="" class="nav-link">Sign In</a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link">Sign Up</a>
+            </li>
+        </ul>
+    </links>
+    <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->

@@ -1,0 +1,22 @@
+div .card{
+    border: none;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.card a{
+    padding: 0.5rem 1rem;
+    border: 1px solid black;
+    color: black;
+    border-radius: 5px;
+    align-self: center;
+}
+
+.card a:hover{
+    background-color: #292928;
+    color: white;
+}
