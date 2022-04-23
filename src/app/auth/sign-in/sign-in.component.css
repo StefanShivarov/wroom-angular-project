@@ -83,3 +83,16 @@
     color: black;
     text-decoration: underline;
 }
+
+.sign-up-form .form-last .submit-disabled{
+    background-color: grey;
+    color: red;
+}
+
+.sign-up-form .input-error{
+    border-left: 2px solid red;
+}
+
+.form-row .error{
+    color: red;
+}

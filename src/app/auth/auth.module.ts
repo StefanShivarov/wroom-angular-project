@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-import { AuthRoutingModule } from './auth-routing.module';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
+    ReactiveFormsModule
   ]
 })
 export class AuthModule { }

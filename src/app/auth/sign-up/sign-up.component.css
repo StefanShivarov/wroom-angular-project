@@ -1,6 +1,3 @@
-*, *::before,*::after{
-    box-sizing: border-box;
-}
 .wrapper{
     display: flex;
     align-items: center;
@@ -27,6 +24,14 @@
     display: flex;
     flex-direction: column;
     padding-left: 0.3rem
+}
+
+.sign-up-form .input-error{
+    border-left: 2px solid red;
+}
+
+.form-row .error{
+    color: red;
 }
 
 .form-container .img-container{
@@ -67,6 +72,11 @@
     background-color: #ffea00;
     padding: 0.5rem 1rem;
     border-radius: 5px;
+}
+
+.sign-up-form .form-last .submit-disabled{
+    background-color: grey;
+    color: red;
 }
 
 .form-last{

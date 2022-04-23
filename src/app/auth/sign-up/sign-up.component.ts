@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SignUpUserDto } from 'src/app/core/interfaces/signUpUserDto';
+import { passwordsMatch } from '../util';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,9 +11,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private router: Router) { }
+
+  passwordControl = new FormControl(null, [Validators.required, Validators.minLength(5)]);
+
+  signUpFormGroup: FormGroup = this.formBuilder.group({
+    'fullName': new FormControl(null, [Validators.required, Validators.minLength(3)]),
+    'email': new FormControl(null, [Validators.required, Validators.email]),
+    'username': new FormControl(null, [Validators.required, Validators.minLength(4)]),
+    'passwords': new FormGroup({
+      'password': this.passwordControl,
+      'repeatPassword': new FormControl(null, [Validators.required, passwordsMatch(this.passwordControl)])
+    })
+  })
+
+  get passwordsGroup(): FormGroup {
+    return this.signUpFormGroup.controls['passwords'] as FormGroup;
+  }
 
   ngOnInit(): void {
   }
 
+  shouldShowErrorForControl(controlName: string, sourceGroup: FormGroup = this.signUpFormGroup){
+    return sourceGroup.controls[controlName].touched && sourceGroup.controls[controlName].invalid;
+  }
+
+  handleSignUp(): void{
+    const { fullName, email, username, passwords } = this.signUpFormGroup.value;
+
+    const body: SignUpUserDto = {
+      fullName: fullName,
+      email: email,
+      username: username,
+      password: passwords.password
+    }
+
+    console.log(body);
+    this.signUpFormGroup.reset();
+  }
 }

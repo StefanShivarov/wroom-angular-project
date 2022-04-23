@@ -3,30 +3,67 @@
         <div class="img-container">
             <img src="https://wallpaperaccess.com/full/1705956.jpg" alt="">
         </div>
-        <form action="" class="sign-up-form">
+        <form [formGroup]="signUpFormGroup" (ngSubmit)="handleSignUp()" class="sign-up-form">
             <h2>Sign Up</h2>
             <section class="form-row">
                 <label for="fullName">Full Name</label>
-                <input type="text" id="fullName" name="fullName" placeholder="Full Name...">
+                <ng-container *ngIf="shouldShowErrorForControl('fullName')">
+                    <p class="error" *ngIf="signUpFormGroup.controls['fullName'].errors?.['required']">Full Name is
+                        required!</p>
+                    <p class="error" *ngIf="signUpFormGroup.controls['fullName'].errors?.['minLength'] !== null">Full Name must
+                        be at least 3 characters!</p>
+                </ng-container>
+                <input formControlName="fullName" [class.input-error]="shouldShowErrorForControl('fullName')"
+                    type="text" id="fullName" name="fullName" placeholder="Full Name...">
             </section>
             <section class="form-row">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Email Address...">
+                <ng-container *ngIf="shouldShowErrorForControl('email')">
+                    <p class="error" *ngIf="signUpFormGroup.controls['email'].errors?.['required']">Email is
+                        required!</p>
+                    <p class="error" *ngIf="signUpFormGroup.controls['email'].errors?.['email']">Email is invalid!</p>
+                </ng-container>
+                <input formControlName="email" [class.input-error]="shouldShowErrorForControl('email')" type="email"
+                    id="email" name="email" placeholder="Email Address...">
             </section>
             <section class="form-row">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Username...">
+                <ng-container *ngIf="shouldShowErrorForControl('username')">
+                    <p class="error" *ngIf="signUpFormGroup.controls['username'].errors?.['required']">Username is
+                        required!</p>
+                    <p class="error" *ngIf="signUpFormGroup.controls['username'].errors?.['minLength'] !== null">Username must be
+                        at least 4 characters!</p>
+                </ng-container>
+                <input formControlName="username" [class.input-error]="shouldShowErrorForControl('username')"
+                    type="text" id="username" name="username" placeholder="Username...">
             </section>
-            <section class="form-row">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="********">
-            </section>
-            <section class="form-row">
-                <label for="repeatPassword">Repeat Password</label>
-                <input type="password" id="repeatPassword" name="repeatPassword" placeholder="********">
-            </section>
+            <div formGroupName="passwords">
+                <section class="form-row">
+                    <label for="password">Password</label>
+                    <ng-container *ngIf="shouldShowErrorForControl('password', passwordsGroup)">
+                        <p class="error" *ngIf="passwordsGroup.controls['password'].errors?.['required']">Password is
+                            required!</p>
+                        <p class="error" *ngIf="passwordsGroup.controls['password'].errors?.['minLength'] !== null">Password must be
+                            at least 5 characters!</p>
+                    </ng-container>
+                    <input formControlName="password"
+                        [class.input-error]="shouldShowErrorForControl('password', passwordsGroup)" type="password"
+                        id="password" name="password" placeholder="********">
+                </section>
+                <section class="form-row">
+                    <label for="repeatPassword">Repeat Password</label>
+                    <ng-container *ngIf="shouldShowErrorForControl('repeatPassword', passwordsGroup)">
+                        <p class="error" *ngIf="passwordsGroup.controls['repeatPassword'].errors?.['required']">Password is
+                            required!</p>
+                        <p class="error" *ngIf="passwordsGroup.controls['repeatPassword'].errors?.['passwordMismatch']">Passwords don't match!</p>
+                    </ng-container>
+                    <input formControlName="repeatPassword"
+                        [class.input-error]="shouldShowErrorForControl('repeatPassword', passwordsGroup)"
+                        type="password" id="repeatPassword" name="repeatPassword" placeholder="********">
+                </section>
+            </div>
             <section class="form-last">
-                <input class="form-submit" type="submit" value="Sign Up">
+                <input [disabled]="signUpFormGroup.invalid" [class.submit-disabled]="signUpFormGroup.invalid" class="form-submit" type="submit" value="Sign Up">
                 <p>Already have an account? <a routerLink="/signin">Sign In</a>.</p>
             </section>
         </form>
