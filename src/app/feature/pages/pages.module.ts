@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { OffersModule } from '../offers/offers.module';
-import { BlogModule } from '../news/blog.module';
 
 
 
@@ -13,7 +12,6 @@ import { BlogModule } from '../news/blog.module';
   imports: [
     CommonModule,
     OffersModule,
-    BlogModule
   ],
   exports:[
     LandingPageComponent

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IOffer } from 'src/app/core/interfaces/offer';
+import { OfferService } from 'src/app/core/service/offer.service';
 
 @Component({
   selector: 'app-offers-grid',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OffersGridComponent implements OnInit {
 
-  constructor() { }
+  latestOffers!: IOffer[];
+  constructor(private offerService: OfferService) { }
 
   ngOnInit(): void {
+    this.offerService.getLatestOffers$().subscribe(offers => this.latestOffers = offers);
   }
 
 }

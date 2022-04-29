@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IOffer } from 'src/app/core/interfaces/offer';
 
 @Component({
   selector: 'app-offer-card',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./offer-card.component.css']
 })
 export class OfferCardComponent implements OnInit {
+
+  @Input() offer!: IOffer;
 
   constructor() { }
 

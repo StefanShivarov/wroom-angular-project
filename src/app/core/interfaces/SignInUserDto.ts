@@ -1,4 +1,4 @@
 export interface SignInUserDto{
-    email: string,
+    username: string,
     password: string
 }

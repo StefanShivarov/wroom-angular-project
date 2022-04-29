@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SignInUserDto } from 'src/app/core/interfaces/SignInUserDto';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -9,10 +11,11 @@ import { SignInUserDto } from 'src/app/core/interfaces/SignInUserDto';
 })
 export class SignInComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) { }
+  errorMessage: string = '';
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   signInFormGroup: FormGroup = this.formBuilder.group({
-    'email': new FormControl(null, [Validators.required, Validators.email]),
+    'username': new FormControl(null, [Validators.required, Validators.minLength(3)]),
     'password': new FormControl(null, [Validators.required, Validators.minLength(5)])
   })
 
@@ -24,10 +27,20 @@ export class SignInComponent implements OnInit {
   }
 
   handleSignIn(): void{
-    const { email, password } = this.signInFormGroup.value;
-
+    const { username, password } = this.signInFormGroup.value;
+    this.errorMessage = '';
+    this.authService.signIn$(this.signInFormGroup.value).subscribe({
+      next: () => {
+        console.log('User successfully logged in!');
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.log(err);
+        this.errorMessage = err.error.message;
+      }
+    })
     const body: SignInUserDto = {
-      email: email,
+      username: username,
       password: password
     }
 

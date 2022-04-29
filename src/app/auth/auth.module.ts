@@ -5,6 +5,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OffersModule } from '../feature/offers/offers.module';
 
 
 
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OffersModule
   ]
 })
 export class AuthModule { }

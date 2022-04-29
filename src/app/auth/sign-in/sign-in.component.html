@@ -2,14 +2,16 @@
     <div class="form-container">
         <form [formGroup]="signInFormGroup" (ngSubmit)="handleSignIn()" class="sign-up-form">
             <h2>Sign In</h2>
+            <p *ngIf="errorMessage" class="error">{{errorMessage}}</p>
             <section class="form-row">
-                <label for="email">Email</label>
-                <ng-container *ngIf="shouldShowErrorForControl('email')">
-                    <p class="error" *ngIf="signInFormGroup.controls['email'].errors?.['required']">Email is
+                <label for="username">Username</label>
+                <ng-container *ngIf="shouldShowErrorForControl('username')">
+                    <p class="error" *ngIf="signInFormGroup.controls['username'].errors?.['required']">Email is
                         required!</p>
-                    <p class="error" *ngIf="signInFormGroup.controls['email'].errors?.['email']">Email is invalid!</p>
+                    <p class="error" *ngIf="signInFormGroup.controls['username'].errors?.['minLength'] !== null">Username must be
+                        at least 4 characters!</p>
                 </ng-container>
-                <input formControlName="email" [class.input-error]="shouldShowErrorForControl('email')" type="email" id="email" name="email" placeholder="Email Address...">
+                <input formControlName="username" [class.input-error]="shouldShowErrorForControl('username')" type="text" id="username" name="username" placeholder="Username...">
             </section>
             <section class="form-row">
                 <label for="password">Password</label>

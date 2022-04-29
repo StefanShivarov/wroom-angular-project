@@ -1,0 +1,41 @@
+<div class="offer-details-container">
+    <section class="offer-main">
+        <div class="offer-info">
+            <h1>{{offer.title}}</h1>
+            <h3>{{offer.price}}</h3>
+            <h3>Offer by: {{offer.owner.username}}</h3>
+            <p>{{offer.description}}
+            </p>
+        </div>
+        <div class="offer-img-container">
+            <img [src]="offer.imageUrl" alt="">
+        </div>
+    </section>
+    <section class="comments-section">
+        <form action="">
+            <textarea name="textContent" id="textContent" cols="30" rows="5" resize="none"></textarea>
+            <input class="add-comment-btn" type="submit" value="Comment">
+        </form>
+
+        <div class="comment">
+            <h4>Username</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, sit.</p>
+            <hr>
+        </div>
+        <div class="comment">
+            <h4>Username</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, sit.</p>
+            <hr>
+        </div>
+        <div class="comment">
+            <h4>Username</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, sit.</p>
+            <hr>
+        </div>
+        <div class="comment">
+            <h4>Username</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, sit.</p>
+            <hr>
+        </div>
+    </section>
+</div>

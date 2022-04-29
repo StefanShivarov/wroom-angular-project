@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SignUpUserDto } from 'src/app/core/interfaces/signUpUserDto';
+import { SignUpUserDto } from 'src/app/core/interfaces/SignUpUserDto';
+import { AuthService } from 'src/app/core/service/auth.service';
 import { passwordsMatch } from '../util';
 
 @Component({
@@ -11,14 +12,14 @@ import { passwordsMatch } from '../util';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
 
   passwordControl = new FormControl(null, [Validators.required, Validators.minLength(5)]);
 
   signUpFormGroup: FormGroup = this.formBuilder.group({
     'fullName': new FormControl(null, [Validators.required, Validators.minLength(3)]),
     'email': new FormControl(null, [Validators.required, Validators.email]),
-    'username': new FormControl(null, [Validators.required, Validators.minLength(4)]),
+    'username': new FormControl(null, [Validators.required, Validators.minLength(3)]),
     'passwords': new FormGroup({
       'password': this.passwordControl,
       'repeatPassword': new FormControl(null, [Validators.required, passwordsMatch(this.passwordControl)])
@@ -47,6 +48,7 @@ export class SignUpComponent implements OnInit {
     }
 
     console.log(body);
+    // this.authService.signUpUser(body);
     this.signUpFormGroup.reset();
   }
 }

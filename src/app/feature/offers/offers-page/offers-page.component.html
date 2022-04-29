@@ -1,17 +1,6 @@
 <div class="cards-container">
-    <h1>Offers</h1>
+    <h1>All offers</h1>
     <div class="row row-cols-4 row-cols-md-3 g-4">
-        <app-offer-card></app-offer-card>
-        <app-offer-card></app-offer-card>
-        <app-offer-card></app-offer-card>
-        <app-offer-card></app-offer-card>
-        <app-offer-card></app-offer-card>
-        <app-offer-card></app-offer-card>
-        <app-offer-card></app-offer-card>
-        <app-offer-card></app-offer-card>
-        <app-offer-card></app-offer-card>
-        <app-offer-card></app-offer-card>
-        <app-offer-card></app-offer-card>
-        <app-offer-card></app-offer-card>
+        <app-offer-card *ngFor="let offer of offers" [offer]="offer"></app-offer-card>
     </div>        
 </div>

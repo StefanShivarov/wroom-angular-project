@@ -8,6 +8,8 @@ import { OfferService } from './service/offer.service';
 import { BlogService } from './service/blog.service';
 import { AuthRoutingModule } from '../auth/auth-routing.module';
 import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RequestInterceptor } from './request.interceptor';
 
 
 
@@ -35,6 +37,11 @@ export class CoreModule {
         UserService,
         OfferService,
         BlogService,
+        {
+          provide: HTTP_INTERCEPTORS,
+          multi: true,
+          useClass: RequestInterceptor
+        }
       ]
     }
   }

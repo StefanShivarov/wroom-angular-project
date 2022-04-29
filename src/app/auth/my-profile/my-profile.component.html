@@ -1,1 +1,19 @@
-<p>my-profile works!</p>
+<div class="profile-container">
+    <section class="profile-info">
+        <h2>Full Name: {{user!.fullName}} </h2>
+        <h3>Username: {{user!.username}} </h3>
+        <h3>Email: {{user!.email}}</h3>
+    </section>
+    <section class="profile-offers">
+        <div class="cards-container">
+            <h1>{{user!.username}}'s Offers</h1>
+            <div *ngIf="myOffers" class="row row-cols-4 row-cols-md-3 g-4">
+                <app-offer-card *ngFor="let offer of myOffers" [offer]="offer"></app-offer-card>
+                <div *ngIf="myOffers.length === 0"><h1>No offers yet</h1></div>
+            </div>
+            <div *ngIf="!myOffers">
+                <h1>Loading...</h1>
+            </div>        
+        </div>
+    </section>
+</div>
