@@ -8,6 +8,7 @@ import { OffersPageComponent } from './offers-page/offers-page.component';
 import { AddOfferComponent } from './add-offer/add-offer.component';
 import { HeaderCarouselComponent } from './header-carousel/header-carousel.component';
 import { OfferDetailsComponent } from './offer-details/offer-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,7 +24,8 @@ import { OfferDetailsComponent } from './offer-details/offer-details.component';
   imports: [
     CommonModule,
     MDBBootstrapModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports:[
     OffersGridComponent,

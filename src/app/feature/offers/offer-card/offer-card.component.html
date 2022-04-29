@@ -1,9 +1,12 @@
-<div class="col">
+<div class="col h-100">
     <div class="card h-100">
         <img [src]="offer.imageUrl" class="card-img-top"
             alt="Hollywood Sign on The Hill" />
         <div class="card-body">
-            <h5 class="card-title">{{offer.title}}</h5>
+            <div class="body-head">
+                <h4 class="card-title">{{offer.title}}</h4>
+                <h5 class="card-price">{{offer.price | currency:"EUR":"symbol"}}</h5>
+            </div>
             <p class="card-text">
                 {{offer.description}}
             </p>

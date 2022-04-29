@@ -2,7 +2,7 @@
     <section class="offer-main">
         <div class="offer-info">
             <h1>{{offer.title}}</h1>
-            <h3>{{offer.price}}</h3>
+            <h3>{{offer.price | currency:"EUR":"symbol"}}</h3>
             <h3>Offer by: {{offer.owner.username}}</h3>
             <p>{{offer.description}}
             </p>
@@ -12,29 +12,18 @@
         </div>
     </section>
     <section class="comments-section">
-        <form action="">
-            <textarea name="textContent" id="textContent" cols="30" rows="5" resize="none"></textarea>
-            <input class="add-comment-btn" type="submit" value="Comment">
+        <form *ngIf="(isLoggedIn$ | async)" [formGroup]="addCommentFormGroup" (ngSubmit)="handleAddComment()">
+            <ng-container *ngIf="shouldShowErrorForControl('textContent')">
+                <p class="error" *ngIf="addCommentFormGroup.controls['textContent'].errors?.['required']">Comment can't be blank!</p>
+            </ng-container>
+            <textarea formControlName="textContent" name="textContent" id="textContent" cols="30" rows="5" resize="none"></textarea>
+            <input [disabled]="addCommentFormGroup.invalid" [class.submit-disabled]="addCommentFormGroup.invalid" class="add-comment-btn" type="submit" value="Comment">
         </form>
 
-        <div class="comment">
-            <h4>Username</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, sit.</p>
-            <hr>
-        </div>
-        <div class="comment">
-            <h4>Username</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, sit.</p>
-            <hr>
-        </div>
-        <div class="comment">
-            <h4>Username</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, sit.</p>
-            <hr>
-        </div>
-        <div class="comment">
-            <h4>Username</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, sit.</p>
+        <h3>Comments</h3>
+        <div class="comment" *ngFor="let comment of comments">
+            <h4>{{comment.author.username}}</h4>
+            <p>{{comment.textContent}}</p>
             <hr>
         </div>
     </section>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AddOfferDto } from '../interfaces/addOfferDto';
 import { IOffer } from '../interfaces/offer';
 
 @Injectable({
@@ -26,5 +27,9 @@ export class OfferService {
 
   getAllOffers$(): Observable<IOffer[]>{
     return this.httpClient.get<IOffer[]>(`${environment.apiUrl}/offers`);
+  }
+
+  addOffer$(offer: AddOfferDto): Observable<IOffer>{
+    return this.httpClient.post<IOffer>(`${environment.apiUrl}/offers`, offer, {withCredentials: true});
   }
 }

@@ -1,16 +1,16 @@
 <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
-    <mdb-carousel-item>
+    <mdb-carousel-item *ngFor="let offer of offers">
         <div class="view w-100">
-            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).webp"
-                alt="First slide">
+            <img class="d-block w-100" [src]="offer.imageUrl"
+                alt="Offer Image">
             <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
         </div>
         <div class="carousel-caption">
-            <h3 class="h1-responsive">Light mask</h3>
-            <a class="read-review-btn">First text</a>
+            <h3 class="h1-responsive">{{offer.title}}</h3>
+            <a [routerLink]="['/offers', offer.id]" class="read-review-btn">See more</a>
         </div>
     </mdb-carousel-item>
-    <mdb-carousel-item>
+    <!-- <mdb-carousel-item>
         <div class="view w-100">
             <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).webp"
                 alt="Second slide">
@@ -30,5 +30,5 @@
             <h3 class="h1-responsive">Slight mask</h3>
             <a class="read-review-btn">Third text</a>
         </div>
-    </mdb-carousel-item>
+    </mdb-carousel-item> -->
 </mdb-carousel>

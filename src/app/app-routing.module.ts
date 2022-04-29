@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
 import { AddOfferComponent } from './feature/offers/add-offer/add-offer.component';
 import { OfferDetailsComponent } from './feature/offers/offer-details/offer-details.component';
 import { OffersGridComponent } from './feature/offers/offers-grid/offers-grid.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
   {
     path: 'offers/add',
     pathMatch: 'full',
-    component: AddOfferComponent
+    component: AddOfferComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'offers/:id',

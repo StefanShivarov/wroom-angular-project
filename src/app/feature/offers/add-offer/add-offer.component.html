@@ -1,1 +1,51 @@
-<p>add-offer works!</p>
+<div class="wrapper">
+    <div class="form-container">
+        <div class="img-container">
+            <img src="https://wallpaperaccess.com/full/1705956.jpg" alt="">
+        </div>
+        <form [formGroup]="addOfferFormGroup" (ngSubmit)="handleAddOffer()" class="sign-up-form">
+            <h2>Add Offer</h2>
+            <section class="form-row">
+                <label for="title">Title</label>
+                <ng-container *ngIf="shouldShowErrorForControl('title')">
+                    <p class="error" *ngIf="addOfferFormGroup.controls['title'].errors?.['required']">Title is
+                        required!</p>
+                    <p class="error" *ngIf="addOfferFormGroup.controls['title'].errors?.['minLength'] !== null">Title must
+                        be at least 3 characters!</p>
+                </ng-container>
+                <input formControlName="title" [class.input-error]="shouldShowErrorForControl('title')"
+                    type="text" id="title" name="title" placeholder="Title...">
+            </section>
+            <section class="form-row">
+                <label for="description">Description</label>
+                <ng-container *ngIf="shouldShowErrorForControl('description')">
+                    <p class="error" *ngIf="addOfferFormGroup.controls['description'].errors?.['email']">Description is invalid!</p>
+                </ng-container>
+                <input formControlName="description" [class.input-error]="shouldShowErrorForControl('description')" type="email"
+                    id="description" name="description" placeholder="Description...">
+            </section>
+            <section class="form-row">
+                <label for="price">Price</label>
+                <ng-container *ngIf="shouldShowErrorForControl('price')">
+                    <p class="error" *ngIf="addOfferFormGroup.controls['price'].errors?.['required']">Price is
+                        required!</p>
+                    <p class="error" *ngIf="addOfferFormGroup.controls['price'].errors?.['min'] !== null">Invalid price!</p>
+                </ng-container>
+                <input formControlName="price" [class.input-error]="shouldShowErrorForControl('price')"
+                    type="number" step="any" id="price" name="price" placeholder="Price...">
+            </section>
+            <section class="form-row">
+                <label for="imageUrl">Image URL</label>
+                <ng-container *ngIf="shouldShowErrorForControl('imageUrl')">
+                    <p class="error" *ngIf="addOfferFormGroup.controls['imageUrl'].errors?.['required']">Image URL is
+                        required!</p>
+                </ng-container>
+                <input formControlName="imageUrl" [class.input-error]="shouldShowErrorForControl('imageUrl')"
+                    type="text" id="imageUrl" name="imageUrl" placeholder="Image URL...">
+            </section>
+            <section class="form-last">
+                <input [disabled]="addOfferFormGroup.invalid" [class.submit-disabled]="addOfferFormGroup.invalid" class="form-submit" type="submit" value="Add Offer">
+            </section>
+        </form>
+    </div>
+</div>

@@ -71,3 +71,12 @@ textarea{
 .comment h4{
     font-size: 1.2rem;
 }
+
+.submit-disabled{
+    background-color: grey;
+    color: red;
+}
+
+p.error{
+    color: red;
+}

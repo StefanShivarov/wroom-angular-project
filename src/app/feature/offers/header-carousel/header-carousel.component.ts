@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IOffer } from 'src/app/core/interfaces/offer';
+import { OfferService } from 'src/app/core/service/offer.service';
 
 @Component({
   selector: 'app-header-carousel',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderCarouselComponent implements OnInit {
 
-  constructor() { }
+  offers!: IOffer[];
+
+  constructor(private offerService: OfferService) { }
 
   ngOnInit(): void {
+    this.offerService.getLatestOffers$().subscribe(offers => this.offers = offers.slice(0, 3));
   }
-
 }

@@ -29,7 +29,7 @@ export class AuthService {
     this.userService.getUserByUsername$(localStorage.getItem('currentUser') || '')
       .subscribe(user => {
         console.log(user);
-        if(!!user){
+        if(!!user && !(user instanceof Array)){
           this._currentUser.next(user);
         }
       })

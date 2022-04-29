@@ -1,4 +1,6 @@
 import { RouterModule, Routes } from "@angular/router";
+import { AlreadyAuthenticatedGuard } from "../core/guards/already-authenticated.guard";
+import { AuthGuard } from "../core/guards/auth.guard";
 import { MyProfileComponent } from "./my-profile/my-profile.component";
 import { SignInComponent } from "./sign-in/sign-in.component";
 import { SignUpComponent } from "./sign-up/sign-up.component";
@@ -6,16 +8,19 @@ import { SignUpComponent } from "./sign-up/sign-up.component";
 const routes: Routes = [
     {
         path: 'signup',
-        component: SignUpComponent
+        component: SignUpComponent,
+        canActivate: [AlreadyAuthenticatedGuard]
     },
     {
         path: 'signin',
-        component: SignInComponent
+        component: SignInComponent,
+        canActivate: [AlreadyAuthenticatedGuard]
     },
     {
         path: 'profile',
-        component: MyProfileComponent
+        component: MyProfileComponent,
+        canActivate: [AuthGuard]
     }
 ]
 
-export const AuthRoutingModule = RouterModule.forChild(routes);
+export const AuthRoutingModule = RouterModule.forRoot(routes);

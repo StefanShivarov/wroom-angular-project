@@ -1,0 +1,95 @@
+.wrapper{
+    display: flex;
+    align-items: center;
+    padding: 3rem 20rem;
+    background-color: grey;
+}
+
+.form-container{
+    display: flex;
+}
+
+.sign-up-form{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: #292928;
+    padding: 3rem;
+    width: 50%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.sign-up-form .form-row{
+    display: flex;
+    flex-direction: column;
+    padding-left: 0.3rem
+}
+
+.sign-up-form .input-error{
+    border-left: 2px solid red;
+}
+
+.form-row .error{
+    color: red;
+}
+
+.form-container .img-container{
+    flex: 1;
+}
+
+.form-container .img-container img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.sign-up-form label{
+    color: white;
+    font-weight: 600;
+}
+
+.sign-up-form h2{
+    color: white;
+    margin: 0;
+    align-self: flex-start;
+}
+
+.sign-up-form input{
+    background-color: #292928;
+    border: none;
+    border-bottom: 1px solid grey;
+    outline: none;
+    padding: 0 0.5rem 0.5rem 0;
+    color: white;
+}
+
+.sign-up-form .form-last .form-submit{
+    border-bottom: none;
+    color: black;
+    background-color: #ffea00;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.sign-up-form .form-last .submit-disabled{
+    background-color: grey;
+    color: red;
+}
+
+.form-last{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.form-last p{
+    color: white;
+}
+
+.form-last p > a{
+    color: #ffea00;
+    text-decoration: underline;
+}

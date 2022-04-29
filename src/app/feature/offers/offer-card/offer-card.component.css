@@ -8,6 +8,11 @@ div .card{
     align-items: flex-start;
 }
 
+.card-img-top{
+    height: 50%;
+    object-fit: cover;
+}
+
 .card a{
     padding: 0.5rem 1rem;
     border: 1px solid black;
@@ -23,4 +28,10 @@ div .card{
 
 .col{
     margin-bottom: 2rem;
+}
+
+.body-head{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
