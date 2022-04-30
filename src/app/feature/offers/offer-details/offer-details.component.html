@@ -21,10 +21,19 @@
         </form>
 
         <h3>Comments</h3>
-        <div class="comment" *ngFor="let comment of comments">
-            <h4>{{comment.author.username}}</h4>
-            <p>{{comment.textContent}}</p>
-            <hr>
-        </div>
+        <ng-container *ngIf="comments.length !== 0">
+            <div class="comment" *ngFor="let comment of comments">
+                <h4>{{comment.author.username}}</h4>
+                <p>{{comment.textContent}}</p>
+                
+                    <button (click)="deleteCommentHandler(this.comment.id)" *ngIf="comment.author.id === (currentUser$ | async)!.id" class="delete-comment-btn">Delete</button>
+                
+                <hr>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="comments.length == 0">
+            <h4>No comments yet...</h4>
+        </ng-container>
+        
     </section>
 </div>

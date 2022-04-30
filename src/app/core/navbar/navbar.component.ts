@@ -19,7 +19,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.setCurrentUser();
-    console.log(this.currentUser$);
   }
 
   signOutHandler(){

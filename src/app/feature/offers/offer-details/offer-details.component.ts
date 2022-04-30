@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AddCommentDto } from 'src/app/core/interfaces/addCommentDto';
 import { IComment } from 'src/app/core/interfaces/comment';
 import { IOffer } from 'src/app/core/interfaces/offer';
+import { IUser } from 'src/app/core/interfaces/user';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { CommentService } from 'src/app/core/service/comment.service';
 import { OfferService } from 'src/app/core/service/offer.service';
@@ -19,6 +20,7 @@ export class OfferDetailsComponent implements OnInit {
   offer!: IOffer;
   comments!: IComment[];
   isLoggedIn$: Observable<boolean> = this.authService.isLoggedIn$;
+  currentUser$: Observable<IUser | undefined> = this.authService.currentUser$;
 
   constructor(private activatedRoute: ActivatedRoute, private offerService: OfferService,
      private commentService: CommentService, private formBuilder: FormBuilder, private authService: AuthService) { }
@@ -33,7 +35,6 @@ export class OfferDetailsComponent implements OnInit {
       this.offerService.getOfferById$(id).subscribe({
         next: (offer) => {
           this.offer = offer;
-          console.log(offer);
           this.commentService.getCommentsForOffer$(offer.id).subscribe(comments => {
             this.comments = comments;
           });
@@ -53,19 +54,40 @@ export class OfferDetailsComponent implements OnInit {
     const commentToAdd: AddCommentDto = this.addCommentFormGroup.value;
     this.commentService.addComment$(commentToAdd, this.offer.id).subscribe({
       next: (comment) => {
-        console.log(comment);
+        this.updateComments();
       },
       error: (error) => {
         console.error(error);
       }
     });
-    console.log(commentToAdd);
-    this.updateComments();
+    // this.updateComments();
     this.addCommentFormGroup.reset();
   }
 
   updateComments(){
-    this.commentService.getCommentsForOffer$(this.offer.id).subscribe(comments => this.comments = comments);
+    this.commentService.getCommentsForOffer$(this.offer.id).subscribe({
+      next: (comments) => {
+        this.comments = comments;
+      },
+      error: (error) => {
+        console.log('error');
+      }
+    });
+  }
+
+  deleteCommentHandler(commentId: number){
+    const deleteConfirm = confirm('Are you sure you want to delete this comment?');
+
+    if(deleteConfirm){
+      this.commentService.deleteComment$(commentId).subscribe({
+        next: (response) =>{
+          this.updateComments();
+        },
+        error: (error) => {
+          console.error(error);
+        }
+      })
+    }
   }
 
 }

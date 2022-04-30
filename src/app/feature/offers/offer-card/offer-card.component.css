@@ -6,6 +6,7 @@ div .card{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: space-between;
 }
 
 .card-img-top{

@@ -48,7 +48,15 @@ export class SignUpComponent implements OnInit {
     }
 
     console.log(body);
-    // this.authService.signUpUser(body);
+    this.authService.signUp$(body).subscribe({
+      next: (user) => {
+        console.log(user);
+        this.router.navigate(['/signin']);
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
     this.signUpFormGroup.reset();
   }
 }

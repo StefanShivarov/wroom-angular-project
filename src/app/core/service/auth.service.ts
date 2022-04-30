@@ -21,14 +21,12 @@ export class AuthService {
   isLoggedIn$ = this.currentUser$.pipe(map(user => !!user))
 
   constructor(private httpClient: HttpClient, private userService: UserService) {
-    console.log('AuthService # constructor')
     this.setCurrentUser();
   }
 
   setCurrentUser(){
     this.userService.getUserByUsername$(localStorage.getItem('currentUser') || '')
       .subscribe(user => {
-        console.log(user);
         if(!!user && !(user instanceof Array)){
           this._currentUser.next(user);
         }
@@ -57,13 +55,11 @@ export class AuthService {
       this.handleSignIn(newUser);
       localStorage.setItem('currentUser', newUser.username);
       localStorage.setItem('jwtToken', jwtResponse.token);
-      console.log(newUser);
     })
     
   }
 
   handleSignIn(newUser: IUser){
-    console.log(newUser);
     this._currentUser.next(newUser);
   }
 

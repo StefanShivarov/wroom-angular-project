@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { OffersModule } from '../offers/offers.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,6 +13,7 @@ import { OffersModule } from '../offers/offers.module';
   imports: [
     CommonModule,
     OffersModule,
+    RouterModule
   ],
   exports:[
     LandingPageComponent
